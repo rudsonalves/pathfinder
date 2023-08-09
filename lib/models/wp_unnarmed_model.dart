@@ -1,5 +1,4 @@
 class WpUnnarmedModel {
-  //Attack;Price;Damage;Bulk;Hands;Group;Weapon Traits
   String name;
   String? price;
   String damage;
