@@ -2,9 +2,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:pathfinder/models/armor_model.dart';
+import 'package:pathfinder/models/classes_model.dart';
 
 import 'models/wp_simple_melee_model.dart';
 import 'repository/armors_repository.dart';
+import 'repository/classes_repository.dart';
 import 'repository/wp_simple_melee_repository.dart';
 
 class HomePage extends StatefulWidget {
@@ -75,7 +77,14 @@ class _HomePageState extends State<HomePage> {
               children: [
                 const Text('>>>'),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    final listMaps = await ClassesRepository.loadArmorsJson();
+
+                    for (final map in listMaps) {
+                      final classModel = ClassesModel.fromMap(map);
+                      log(classModel.toString());
+                    }
+                  },
                   child: const Text('Botão 04'),
                 ),
                 const Text('<<<'),
