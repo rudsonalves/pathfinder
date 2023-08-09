@@ -1,0 +1,55 @@
+{
+    "dwarf": {
+        "description": "Dwarves are a short, stocky people who are often stubborn, fierce, and devoted.",
+        "boosts": [
+            "constitution",
+            "wisdom",
+            "free"
+        ],
+        "flaw": "charisma"
+    },
+    "elf": {
+        "description": "Elves are a tall, slender, long-lived people with a strong tradition of art and magic.",
+        "boosts": [
+            "dexterity",
+            "inteligence",
+            "free"
+        ],
+        "flaw": "constitution"
+    },
+    "gnome": {
+        "description": "Gnomes are short and hardy folk, with an unquenchable curiosity and eccentric habits.",
+        "boosts": [
+            "constitution",
+            "charisma",
+            "free"
+        ],
+        "flaw": "strength"
+    },
+    "goblin": {
+        "description": "Goblins are a short, scrappy, energetic people who have spent millennia maligned and feared.",
+        "boosts": [
+            "Dexterity,",
+            "Charisma",
+            "free"
+        ],
+        "flaw": "Wisdom"
+    },
+    "halfling": {
+        "description": "Halflings are a short, adaptable people who exhibit remarkable curiosity and humor.",
+        "boosts": [
+            "Dexterity",
+            "Wisdom",
+            "free"
+        ],
+        "flaw": "strength"
+    },
+    "human": {
+        "description": "Humans are incredibly diverse. Some, such as half-elves and half-orcs, even have non-human ancestors.",
+        "boosts": [
+            "free",
+            "free"
+        ],
+        "flaw": "-"
+    }
+}

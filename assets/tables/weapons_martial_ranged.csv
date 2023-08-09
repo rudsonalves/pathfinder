@@ -1,0 +1,7 @@
+Martial Weapons;Price;Damage;Range;Reload;Bulk;Hands;Group;Weapon Traits
+Alchemical bomb;Varies;Varies;20 ft.;-;L;1;Bomb;Varies
+Composite longbow;20 gp;1d8 P;100 ft.;0;2;1+;Bow;Deadly d10, propulsive, volley 30 ft.
+Bow arrows (10);1 sp;-;-;-;L;-;-;-
+Composite shortbow;14 gp;1d6 P;60 ft.;0;1;1+;Bow;Deadly d10, propulsive
+Longbow;6 gp;1d8 P;100 ft.;0;2;1+;Bow;Deadly d10, volley 30 ft.
+Shortbow;3 gp;1d6 P;60 ft.;0;1;1+;Bow;Deadly d10

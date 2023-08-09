@@ -1,0 +1,125 @@
+{
+    "alchemist": {
+        "description": "The alchemist throws alchemical bombs and drinks concoctions of their own making.",
+        "primary": [
+            "intelligence"
+        ],
+        "secondary": [
+            "constitution",
+            "dexterity"
+        ]
+    },
+    "barbarian": {
+        "description": "The barbarian flies into a rage on the battlefield, smashing foes with abandon.",
+        "primary": [
+            "strength"
+        ],
+        "secondary": [
+            "constitution",
+            "dexterity"
+        ]
+    },
+    "bard": {
+        "description": "Skilled performances and secrets of the occult enable the bard to distract foes and inspire allies.",
+        "primary": [
+            "charisma"
+        ],
+        "secondary": [
+            "constitution",
+            "dexterity"
+        ]
+    },
+    "champion": {
+        "description": "A warrior dedicated to a deity, the champion uses divine power to enhance their abilities and protect allies.",
+        "primary": [
+            "strength"
+        ],
+        "secondary": [
+            "charisma",
+            "constitution"
+        ]
+    },
+    "cleric": {
+        "description": "The cleric calls on the power of a deity to cast spells that can heal allies or harm foes.",
+        "primary": [
+            "wisdom"
+        ],
+        "secondary": [
+            "charisma",
+            "constitution"
+        ]
+    },
+    "druid": {
+        "description": "The druid uses the magic of the natural world to bolster allies and strike down enemies.",
+        "primary": [
+            "wisdom"
+        ],
+        "secondary": [
+            "constitution",
+            "dexterity"
+        ]
+    },
+    "fighter": {
+        "description": "The fighter is a master of weapons, martial techniques, and powerful attack combinations.",
+        "primary": [
+            "dexterity",
+            "strength"
+        ],
+        "secondary": [
+            "constitution"
+        ]
+    },
+    "monk": {
+        "description": "The monk wields the secrets of martial arts in dazzling displays of battlefield prowess.",
+        "primary": [
+            "dexterity",
+            "strength"
+        ],
+        "secondary": [
+            "constitution",
+            "wisdom"
+        ]
+    },
+    "ranger": {
+        "description": "The ranger is a master of using their surroundings, traps, and animal allies to harry enemies.",
+        "primary": [
+            "dexterity",
+            "strength"
+        ],
+        "secondary": [
+            "constitution",
+            "wisdom"
+        ]
+    },
+    "rogue": {
+        "description": "The rogue is a multitalented master of skulduggery who strikes when enemies least expect it.",
+        "primary": [
+            "dexterity",
+            "other"
+        ],
+        "secondary": [
+            "charisma",
+            "constitution"
+        ]
+    },
+    "sorcerer": {
+        "description": "The sorcerer's magical might flows from their blood and manifests as fantastic spells and abilities.",
+        "primary": [
+            "charisma"
+        ],
+        "secondary": [
+            "dexterity",
+            "constitution"
+        ]
+    },
+    "wizard": {
+        "description": "The wizard is a scholar whose reservoirs of arcane knowledge powers their wondrous spells and abilities.",
+        "primary": [
+            "intelligence"
+        ],
+        "secondary": [
+            "dexterity",
+            "constitution"
+        ]
+    }
+}

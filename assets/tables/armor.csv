@@ -1,0 +1,14 @@
+name; armorProficiency; price; caBonus; dexCap; checkPenalty; speedPenalty; strenght; bulk; group; armorTraits
+No armor; unarmored; -; +0; -; -; -; -; -; -; -
+Explorer's clothing; unarmored; 1 sp; +0; +5; -; -; -; L; -; Comfort
+Padded armor; lightArmor; 2 sp; +1; +3; -; -; 10; L; -; Comfort
+Leather; lightArmor; 2 gp; +1; +4; -1; -; 10; 1; -; -
+Studded leather; lightArmor; 3 gp; +2; +3; -1; -; 12; 1; -; -
+Chain shirt; lightArmor; 5 gp; +2; +3; -1; -; 12; 1; -; Flexible and Noisy
+Hide; mediumArmor; 2 gp; +3; +2; -2; -5 ft.; 14; 2; Leather; -
+Scale mail; mediumArmor; 4 gp; +3; +2; -2; -5 ft.; 14; 2; Composite; -
+Chain mail; mediumArmor; 6 gp; +4; +1; -2; -5 ft.; 16; 2; Chain; Flexible and Noisy
+Breastplate; mediumArmor; 8 gp; +4; +1; -2; -5 ft.; 16; 2; Plate; -
+Splint mail; heavyArmor; 13 gp; +5; +1; -3; -10 ft.; 16; 3; Composite; -
+Half plate; heavyArmor; 18 gp; +5; +1; -3; -10 ft.; 16; 3; Plate; -
+Full plate; heavyArmor; 30 gp; +6; +0; -3; -10 ft.; 18; 4; Plate; Bulwark

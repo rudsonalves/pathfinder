@@ -1,0 +1,11 @@
+Simple Weapons;Price;Damage;Range;Reload;Bulk;Hands;Group;Weapon Traits
+Blowgun;1 sp;1 P;20 ft.;1;L;1;Dart;Agile, nonlethal
+Blowgun darts (10);5 cp;-;-;-;L;-;-;-
+Crossbow;3 gp;1d8 P;120 ft.;1;1;2;Bow;-
+Crossbow bolts (10);1 sp;-;-;-;L;-;-;-
+Dart;1 cp;1d4 P;20 ft.;-;L;1;Dart;Agile, thrown
+Hand crossbow;3 gp;1d6 P;60 ft.;1;L;1;Bow;-
+Heavy crossbow;4 gp;1d10 P;120 ft.;2;2;2;Bow;-
+Javelin;1 sp;1d6 P;30 ft.;-;L;1;Dart;Thrown
+Sling;0;1d6 B;50 ft.;1;L;1;Sling;Propulsive
+Sling bullets (10);1 cp;-;-;-;L;-;-;-

@@ -1,0 +1,12 @@
+Simple Weapons;Price;Damage;Bulk;Hands;Group;Weapon Traits
+Club;0;1d6 B;1;1;Club;Thrown 10 ft.
+Dagger;2 sp;1d4 P;L;1;Knife;Agile, finesse, thrown 10 ft., versatile S
+Gauntlet;2 sp;1d4 B;L;1;Brawling; Agile, free-hand
+Light mace;4 sp;1d4 B;L;1;Club;Agile, finesse, shove
+Longspear;5 sp;1d8 P;2;2;Spear; Reach
+Mace;1 gp;1d6 B;1;1;Club;Shove
+Morningstar;1 gp;1d6 B;1;1;Club;Versatile P
+Sickle;2 sp;1d4 S;L;1;Knife;Agile, finesse, trip
+Spear;1 sp;1d6 P;1;1;Spear;Thrown 20 ft.
+Spiked gauntlet;3 sp;1d4 P;L;1;Brawling;Agile, free-hand
+Staff;0;1d4 B;1;1;Club;Two-hand d8
