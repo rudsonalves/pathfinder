@@ -1,11 +1,17 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:pathfinder/models/armor_model.dart';
 
+import 'models/ancestry_model.dart';
+import 'models/armor_model.dart';
+import 'models/classes_model.dart';
 import 'models/wp_simple_melee_model.dart';
+import 'models/wp_unnarmed_model.dart';
+import 'repository/ancestry_repository.dart';
 import 'repository/armors_repository.dart';
+import 'repository/classes_repository.dart';
 import 'repository/wp_simple_melee_repository.dart';
+import 'repository/wp_unnarmed_repository.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,14 +30,14 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  // void pressWpUnnarmedButton() async {
-  //   final wpUnnarmedList = await WpUnnarmedRepository.loadWpUnnarmedCSV();
+  void pressWpUnnarmedButton() async {
+    final wpUnnarmedList = await WpUnnarmedRepository.loadWpUnnarmedCSV();
 
-  //   for (final row in wpUnnarmedList) {
-  //     WpUnnarmedModel weapon = WpUnnarmedModel.fromList(row);
-  //     log(weapon.toString());
-  //   }
-  // }
+    for (final row in wpUnnarmedList) {
+      WpUnnarmedModel weapon = WpUnnarmedModel.fromList(row);
+      log(weapon.toString());
+    }
+  }
 
   void pressWpSimpleMeleeButton() async {
     final wpSimpleMeleeList =
@@ -59,12 +65,25 @@ class _HomePageState extends State<HomePage> {
             const Text('filho 1'),
             const Text('filho 2'),
             ElevatedButton(
-              onPressed: armorButton,
-              child: const Text('Armors'),
+              onPressed: () async {
+                final listAncestry =
+                    await AncestryRepository.loadAncestryJson();
+
+                for (AncestryModel ancestry in listAncestry) {
+                  log(ancestry.toString());
+                }
+              },
+              child: const Text('Ancestry'),
             ),
             OutlinedButton(
-              onPressed: armorButton,
-              child: const Text('Botão 02'),
+              onPressed: () async {
+                final listClasses = await ClassesRepository.loadClassesJson();
+
+                for (ClassesModel classe in listClasses) {
+                  log(classe.toString());
+                }
+              },
+              child: const Text('Classes'),
             ),
             TextButton(
               onPressed: pressWpSimpleMeleeButton,
