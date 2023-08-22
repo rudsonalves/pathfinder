@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:pathfinder/repository/backgound_repository.dart';
 
 import 'models/ancestry_model.dart';
 import 'models/armor_model.dart';
@@ -86,8 +87,15 @@ class _HomePageState extends State<HomePage> {
               child: const Text('Classes'),
             ),
             TextButton(
-              onPressed: pressWpSimpleMeleeButton,
-              child: const Text('Botão 03'),
+              onPressed: () async {
+                final listBackgrounds =
+                    await BackgroundRepository.loadBackgroundsJson();
+
+                for (final bg in listBackgrounds) {
+                  log(bg.toString());
+                }
+              },
+              child: const Text('Backgound'),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
