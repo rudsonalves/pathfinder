@@ -106,27 +106,29 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             const SizedBox(height: 16),
-            Row(children: [
-              CustomTextField(
-                controller: ancestryController,
-                labelText: 'Ancestry',
-              ),
-              const SizedBox(width: 16),
-              CustomTextField(
-                controller: heritageController,
-                labelText: 'Heritage',
-              ),
-              const SizedBox(width: 16),
-              CustomTextField(
-                controller: classController,
-                labelText: 'Class',
-              ),
-              const SizedBox(width: 16),
-              CustomTextField(
-                controller: sizeController,
-                labelText: 'Size',
-              ),
-            ]),
+            Row(
+              children: [
+                CustomTextField(
+                  controller: ancestryController,
+                  labelText: 'Ancestry',
+                ),
+                const SizedBox(width: 16),
+                CustomTextField(
+                  controller: heritageController,
+                  labelText: 'Heritage',
+                ),
+                const SizedBox(width: 16),
+                CustomTextField(
+                  controller: classController,
+                  labelText: 'Class',
+                ),
+                const SizedBox(width: 16),
+                CustomTextField(
+                  controller: sizeController,
+                  labelText: 'Size',
+                ),
+              ],
+            ),
             const SizedBox(height: 16),
             Row(
               children: [
