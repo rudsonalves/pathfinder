@@ -10,9 +10,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final playerNameController = TextEditingController();
+  final characterNameController = TextEditingController();
   final alignmentController = TextEditingController();
-  final playerController = TextEditingController();
+  final playerNameController = TextEditingController();
   final levelController = TextEditingController();
   final experienceController = TextEditingController();
   final deityController = TextEditingController();
@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
             Row(
               children: [
                 CustomTextField(
-                  controller: playerNameController,
+                  controller: characterNameController,
                   labelText: 'Character Name',
                   hintText: "Enter your Caracter's Name",
                   flex: 2,
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(width: 8),
                 CustomTextField(
-                  controller: playerController,
+                  controller: playerNameController,
                   labelText: "Player's Name",
                   hintText: 'Enter your Name',
                   flex: 2,
@@ -167,9 +167,9 @@ class _HomePageState extends State<HomePage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    log(playerNameController.text);
+                    log(characterNameController.text);
                     log(alignmentController.text);
-                    log(playerController.text);
+                    log(playerNameController.text);
                   },
                   child: const Text('Print'),
                 ),
