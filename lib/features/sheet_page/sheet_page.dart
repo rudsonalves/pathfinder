@@ -2,14 +2,19 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+import '../../common/constants.dart';
+import '../../widget/custom_dropdown_form_field.dart';
+import '../../widget/custom_text_field.dart';
+import '../../widget/spinbox_field.dart';
+
+class SheetPage extends StatefulWidget {
+  const SheetPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<SheetPage> createState() => _SheetPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _SheetPageState extends State<SheetPage> {
   final characterNameController = TextEditingController();
   final alignmentController = TextEditingController();
   final playerNameController = TextEditingController();
@@ -28,8 +33,18 @@ class _HomePageState extends State<HomePage> {
   final eyesController = TextEditingController();
   final hairController = TextEditingController();
 
+  // late List<AncestryModel> ancestryList;
+
+  @override
+  void initState() {
+    super.initState();
+    // ancestryList = AncestryRepository.loadAncestryJson();
+  }
+
   @override
   Widget build(BuildContext context) {
+    levelController.text = '1';
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pathfinder 2'),
@@ -64,10 +79,11 @@ class _HomePageState extends State<HomePage> {
                   flex: 2,
                 ),
                 const SizedBox(width: 8),
-                CustomTextField(
+                CustomDropdownFormField(
                   controller: alignmentController,
                   labelText: 'Alignment',
                   hintText: 'True Neutral',
+                  items: alignmentList,
                 ),
                 const SizedBox(width: 8),
                 CustomTextField(
@@ -83,9 +99,11 @@ class _HomePageState extends State<HomePage> {
             ),
             Row(
               children: [
-                CustomTextField(
+                SpinBoxField(
                   controller: levelController,
                   labelText: 'Level',
+                  minValue: 1,
+                  maxValue: 20,
                 ),
                 const SizedBox(width: 16),
                 CustomTextField(
@@ -170,49 +188,14 @@ class _HomePageState extends State<HomePage> {
                 ElevatedButton(
                   onPressed: () {
                     log(characterNameController.text);
-                    log(alignmentController.text);
                     log(playerNameController.text);
+                    log(alignmentController.text);
                   },
                   child: const Text('Print'),
                 ),
               ],
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class CustomTextField extends StatelessWidget {
-  final String labelText;
-  final String? hintText;
-  final TextEditingController? controller;
-  final int flex;
-
-  const CustomTextField({
-    super.key,
-    required this.labelText,
-    this.hintText,
-    this.controller,
-    this.flex = 1,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: flex,
-      child: TextField(
-        controller: controller,
-        decoration: InputDecoration(
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          labelText: labelText,
-          hintText: hintText,
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(16),
-            ),
-          ),
         ),
       ),
     );

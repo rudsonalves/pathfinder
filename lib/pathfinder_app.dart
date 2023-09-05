@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'home_page.dart';
+import 'features/sheet_page/sheet_page.dart';
 
 class PathfinderApp extends StatelessWidget {
   const PathfinderApp({super.key});
@@ -15,7 +15,7 @@ class PathfinderApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: const SheetPage(),
     );
   }
 }
