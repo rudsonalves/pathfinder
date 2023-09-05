@@ -2,6 +2,10 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
+import '../../common/constants.dart';
+import 'widgets/custom_combo_field.dart';
+import 'widgets/custom_text_field.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -30,6 +34,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    levelController.text = '1';
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pathfinder 2'),
@@ -64,10 +70,11 @@ class _HomePageState extends State<HomePage> {
                   flex: 2,
                 ),
                 const SizedBox(width: 8),
-                CustomTextField(
+                CustomComboField(
                   controller: alignmentController,
                   labelText: 'Alignment',
                   hintText: 'True Neutral',
+                  items: alignmentList,
                 ),
                 const SizedBox(width: 8),
                 CustomTextField(
@@ -83,9 +90,35 @@ class _HomePageState extends State<HomePage> {
             ),
             Row(
               children: [
-                CustomTextField(
-                  controller: levelController,
-                  labelText: 'Level',
+                Expanded(
+                  child: Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          int value = int.parse(levelController.text);
+                          if (value == 0) return;
+                          value--;
+                          levelController.text = value.toString();
+                        },
+                        icon: const Icon(Icons.arrow_back_ios),
+                      ),
+                      CustomTextField(
+                        textAlign: TextAlign.center,
+                        controller: levelController,
+                        labelText: 'Level',
+                      ),
+                      const SizedBox(width: 5),
+                      IconButton(
+                        onPressed: () {
+                          int value = int.parse(levelController.text);
+                          if (value == 100) return;
+                          value++;
+                          levelController.text = value.toString();
+                        },
+                        icon: const Icon(Icons.arrow_forward_ios),
+                      )
+                    ],
+                  ),
                 ),
                 const SizedBox(width: 16),
                 CustomTextField(
@@ -102,7 +135,6 @@ class _HomePageState extends State<HomePage> {
                   controller: homelandController,
                   labelText: 'Homeland',
                 ),
-                const SizedBox(height: 16),
               ],
             ),
             const SizedBox(height: 16),
@@ -178,41 +210,6 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class CustomTextField extends StatelessWidget {
-  final String labelText;
-  final String? hintText;
-  final TextEditingController? controller;
-  final int flex;
-
-  const CustomTextField({
-    super.key,
-    required this.labelText,
-    this.hintText,
-    this.controller,
-    this.flex = 1,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: flex,
-      child: TextField(
-        controller: controller,
-        decoration: InputDecoration(
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          labelText: labelText,
-          hintText: hintText,
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(16),
-            ),
-          ),
         ),
       ),
     );

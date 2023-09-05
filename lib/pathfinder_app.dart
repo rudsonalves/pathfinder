@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'home_page.dart';
+import 'features/sheet/home_page.dart';
 
 class PathfinderApp extends StatelessWidget {
   const PathfinderApp({super.key});
