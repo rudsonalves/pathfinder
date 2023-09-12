@@ -39,12 +39,12 @@ class _SheetPageState extends State<SheetPage> {
   void initState() {
     super.initState();
     // ancestryList = AncestryRepository.loadAncestryJson();
+    levelController.text = '1';
+    heightController.text = '5.60';
   }
 
   @override
   Widget build(BuildContext context) {
-    levelController.text = '1';
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pathfinder 2'),
@@ -99,11 +99,12 @@ class _SheetPageState extends State<SheetPage> {
             ),
             Row(
               children: [
-                SpinBoxField(
+                SpinBoxField<int>(
                   controller: levelController,
                   labelText: 'Level',
                   minValue: 1,
                   maxValue: 20,
+                  increment: 1,
                 ),
                 const SizedBox(width: 16),
                 CustomTextField(
@@ -160,9 +161,12 @@ class _SheetPageState extends State<SheetPage> {
                   labelText: 'Age',
                 ),
                 const SizedBox(width: 16),
-                CustomTextField(
+                SpinBoxField<double>(
                   controller: heightController,
                   labelText: 'Height',
+                  minValue: 1.0,
+                  maxValue: 10.0,
+                  increment: 0.02,
                 ),
                 const SizedBox(width: 16),
                 CustomTextField(

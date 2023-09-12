@@ -1,12 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
-class SpinBoxField extends StatefulWidget {
+class SpinBoxField<T extends num> extends StatefulWidget {
   final String labelText;
   final String? hintText;
   final TextEditingController controller;
   final int flex;
-  final int minValue;
-  final int maxValue;
+  final T minValue;
+  final T maxValue;
+  final T increment;
 
   const SpinBoxField({
     super.key,
@@ -14,30 +17,86 @@ class SpinBoxField extends StatefulWidget {
     this.hintText,
     required this.controller,
     this.flex = 1,
-    this.minValue = 0,
-    this.maxValue = 100,
+    required this.minValue,
+    required this.maxValue,
+    required this.increment,
   });
 
   @override
-  State<SpinBoxField> createState() => _SpinBoxFieldState();
+  State<SpinBoxField> createState() => _SpinBoxFieldState<T>();
 }
 
-class _SpinBoxFieldState extends State<SpinBoxField> {
+class _SpinBoxFieldState<T extends num> extends State<SpinBoxField> {
+  Timer? _incrementTimer;
+  Timer? _decrementTimer;
+
+  void _decrementValue() {
+    T value = num.parse(widget.controller.text) as T;
+
+    if (value > widget.minValue) {
+      value = (value - widget.increment) as T;
+      if (T == double) {
+        widget.controller.text = value.toStringAsFixed(2);
+      } else {
+        widget.controller.text = value.toString();
+      }
+    } else {
+      _decrementTimer?.cancel();
+    }
+  }
+
+  void _incrementValue() {
+    T value = num.parse(widget.controller.text) as T;
+
+    if (value < widget.maxValue) {
+      value = (value + widget.increment) as T;
+      if (T == double) {
+        widget.controller.text = value.toStringAsFixed(2);
+      } else {
+        widget.controller.text = value.toString();
+      }
+    } else {
+      _incrementTimer?.cancel();
+    }
+  }
+
+  void _longDecrementValue() {
+    _decrementTimer = Timer.periodic(
+      const Duration(milliseconds: 50),
+      (_) {
+        _decrementValue();
+      },
+    );
+  }
+
+  void _longIncrementValue() {
+    _incrementTimer = Timer.periodic(
+      const Duration(milliseconds: 50),
+      (_) {
+        _incrementValue();
+      },
+    );
+  }
+
+  void _stopDecrement(TapDownDetails details) {
+    _decrementTimer?.cancel();
+  }
+
+  void _stopIncrement(TapDownDetails details) {
+    _incrementTimer?.cancel();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
       flex: widget.flex,
       child: Row(
         children: [
-          IconButton(
-            onPressed: () {
-              int value = int.parse(widget.controller.text);
-              if (value > widget.minValue) {
-                value--;
-                widget.controller.text = value.toString();
-              }
-            },
-            icon: const Icon(Icons.arrow_back_ios),
+          InkWell(
+            onTap: _decrementValue,
+            onLongPress: _longDecrementValue,
+            onTapDown: _stopDecrement,
+            child: const Icon(Icons.arrow_back_ios),
           ),
           Expanded(
             child: TextField(
@@ -56,15 +115,11 @@ class _SpinBoxFieldState extends State<SpinBoxField> {
               ),
             ),
           ),
-          IconButton(
-            onPressed: () {
-              int value = int.parse(widget.controller.text);
-              if (value < widget.maxValue) {
-                value++;
-                widget.controller.text = value.toString();
-              }
-            },
-            icon: const Icon(Icons.arrow_forward_ios),
+          InkWell(
+            onTap: _incrementValue,
+            onLongPress: _longIncrementValue,
+            onTapDown: _stopIncrement,
+            child: const Icon(Icons.arrow_forward_ios),
           ),
         ],
       ),
