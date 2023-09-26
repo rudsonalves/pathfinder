@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'features/sheet_page/sheet_page.dart';
+import 'features/sheet/sheet_page.dart';
 
 class PathfinderApp extends StatelessWidget {
   const PathfinderApp({super.key});

@@ -2,10 +2,10 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import '../../common/constants.dart';
-import '../../widget/custom_dropdown_form_field.dart';
-import '../../widget/custom_text_field.dart';
-import '../../widget/spinbox_field.dart';
+import '../../common/constants/constants.dart';
+import '../../common/widget/custom_dropdown_form_field.dart';
+import '../../common/widget/custom_text_field.dart';
+import '../../common/widget/spinbox_field.dart';
 
 class SheetPage extends StatefulWidget {
   const SheetPage({super.key});
@@ -33,12 +33,10 @@ class _SheetPageState extends State<SheetPage> {
   final eyesController = TextEditingController();
   final hairController = TextEditingController();
 
-  // late List<AncestryModel> ancestryList;
-
   @override
   void initState() {
     super.initState();
-    // ancestryList = AncestryRepository.loadAncestryJson();
+    heightController.text = '1.70';
   }
 
   @override
@@ -104,6 +102,7 @@ class _SheetPageState extends State<SheetPage> {
                   labelText: 'Level',
                   minValue: 1,
                   maxValue: 20,
+                  increment: 1,
                 ),
                 const SizedBox(width: 16),
                 CustomTextField(
@@ -160,9 +159,13 @@ class _SheetPageState extends State<SheetPage> {
                   labelText: 'Age',
                 ),
                 const SizedBox(width: 16),
-                CustomTextField(
+                SpinBoxField(
+                  minValue: .50,
+                  maxValue: 2.70,
+                  increment: .01,
                   controller: heightController,
                   labelText: 'Height',
+                  unit: 'm',
                 ),
                 const SizedBox(width: 16),
                 CustomTextField(

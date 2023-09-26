@@ -9,3 +9,12 @@ const List<String> alignmentList = [
   'Chaotic Neutral',
   'Chaotic Evil',
 ];
+
+const List<String> sizeList = [
+  'T',
+  'S',
+  'M',
+  'L',
+  'H',
+  'G',
+];
