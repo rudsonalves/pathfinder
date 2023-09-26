@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class SpinBoxField<T extends num> extends StatefulWidget {
+  final T initialValue;
   final String labelText;
   final String? hintText;
   final TextEditingController controller;
@@ -10,10 +11,11 @@ class SpinBoxField<T extends num> extends StatefulWidget {
   final T minValue;
   final T maxValue;
   final T increment;
-  final String unit;
+  final String? unit;
 
   const SpinBoxField({
     super.key,
+    required this.initialValue,
     required this.labelText,
     this.hintText,
     required this.controller,
@@ -21,7 +23,7 @@ class SpinBoxField<T extends num> extends StatefulWidget {
     required this.minValue,
     required this.maxValue,
     required this.increment,
-    this.unit = '',
+    this.unit,
   });
 
   @override
@@ -29,14 +31,31 @@ class SpinBoxField<T extends num> extends StatefulWidget {
 }
 
 class _SpinBoxFieldState<T extends num> extends State<SpinBoxField> {
+  late T value;
   Timer? _incrementTimer;
   Timer? _decrementTimer;
+
+  @override
+  void initState() {
+    super.initState();
+
+    value = widget.initialValue as T;
+    if (T == double) {
+      widget.controller.text = value.toStringAsFixed(2);
+    } else {
+      widget.controller.text = value.toString();
+    }
+  }
 
   void _longDecrement() {
     _decrementTimer = Timer.periodic(
       const Duration(milliseconds: 50),
       (timer) {
-        _decrement();
+        if (value > widget.minValue) {
+          _decrement();
+        } else {
+          _decrementTimer?.cancel();
+        }
       },
     );
   }
@@ -49,7 +68,11 @@ class _SpinBoxFieldState<T extends num> extends State<SpinBoxField> {
     _incrementTimer = Timer.periodic(
       const Duration(milliseconds: 50),
       (timer) {
-        _increment();
+        if (value < widget.maxValue) {
+          _increment();
+        } else {
+          _incrementTimer?.cancel();
+        }
       },
     );
   }
@@ -59,27 +82,23 @@ class _SpinBoxFieldState<T extends num> extends State<SpinBoxField> {
   }
 
   void _decrement() {
-    T value =
-        num.parse(widget.controller.text.replaceAll(widget.unit, '')) as T;
     if (value > widget.minValue) {
       value = (value - widget.increment) as T;
       if (T == double) {
-        widget.controller.text = '${value.toStringAsFixed(2)}${widget.unit}';
+        widget.controller.text = value.toStringAsFixed(2);
       } else {
-        widget.controller.text = '${value.toString()}${widget.unit}';
+        widget.controller.text = value.toString();
       }
     }
   }
 
   void _increment() {
-    T value =
-        num.parse(widget.controller.text.replaceAll(widget.unit, '')) as T;
     if (value < widget.maxValue) {
       value = (value + widget.increment) as T;
       if (T == double) {
-        widget.controller.text = '${value.toStringAsFixed(2)}${widget.unit}';
+        widget.controller.text = value.toStringAsFixed(2);
       } else {
-        widget.controller.text = '${value.toString()}${widget.unit}';
+        widget.controller.text = value.toString();
       }
     }
   }
@@ -103,7 +122,9 @@ class _SpinBoxFieldState<T extends num> extends State<SpinBoxField> {
               controller: widget.controller,
               decoration: InputDecoration(
                 floatingLabelBehavior: FloatingLabelBehavior.always,
-                labelText: widget.labelText,
+                labelText: widget.unit != null
+                    ? '${widget.labelText} (${widget.unit})'
+                    : widget.labelText,
                 hintText: widget.hintText,
                 border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(
